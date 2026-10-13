@@ -220,7 +220,7 @@ P=[{id:1,slug:"curly-caribbean",n:"Curly Caribbean",t:"Caribbean",m:1,d:"Cachos 
 {id:6,slug:"egg-curl-chocolate",n:"Egg Curl Chocolate",t:"Egg curl",m:1.12,d:"Ombré castanho, 100 g"},
 {id:7,slug:"egg-curl-mel",n:"Egg Curl Mel",t:"Egg curl",m:1.12,d:"Ombré preto e mel, 100 g"}];
 function ch(v){return v<30?Math.round(v):Math.round((v-9)/10)*10+9}
-function pr(q,l){return ch(C[l]*q.m*K)}function mk(q,l){return Math.round(C[l]*q.m*M/5)*5}
+function pr(q,l){if(q.slug=="curly-caribbean"){if(l==18)return 72;if(l==20)return 92}return ch(C[l]*q.m*K)}function mk(q,l){return Math.round(C[l]*q.m*M/5)*5}
 function fq(i){return P.filter(function(q){return q.id==i})[0]}
 try{cart=JSON.parse(localStorage.getItem("bv3")||"[]")}catch(e){cart=[]}
 function ph(q){return F[q.slug]||[]}
