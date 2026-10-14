@@ -218,9 +218,10 @@ P=[{id:1,slug:"curly-caribbean",n:"Curly Caribbean",t:"Caribbean",m:1,d:"Cachos 
 {id:4,slug:"deep-wave-natural",n:"Deep Wave Natural",t:"Deep wave",m:1,d:"Onda profunda, 100 g, 1B natural"},
 {id:5,slug:"egg-curl-natural",n:"Egg Curl Natural",t:"Egg curl",m:1,d:"Caracóis largos, 100 g, 1B natural"},
 {id:6,slug:"egg-curl-chocolate",n:"Egg Curl Chocolate",t:"Egg curl",m:1.12,d:"Ombré castanho, 100 g"},
-{id:7,slug:"egg-curl-mel",n:"Egg Curl Mel",t:"Egg curl",m:1.12,d:"Ombré preto e mel, 100 g"}];
+{id:7,slug:"egg-curl-mel",n:"Egg Curl Mel",t:"Egg curl",m:1.12,d:"Ombré preto e mel, 100 g"},
+{id:8,slug:"paradise-curly",n:"Paradise Curly",t:"Paradise curly",m:1,d:"Caracóis definidos e volumosos, 100 g, 1B natural"}];
 function ch(v){return v<30?Math.round(v):Math.round((v-9)/10)*10+9}
-function pr(q,l){if(q.slug=="curly-caribbean"||q.t=="Pixie curly"){if(l==14)return 54;if(l==16)return 63;if(l==18)return 77;if(l==20)return 92}return ch(C[l]*q.m*K)}function mk(q,l){return Math.round(C[l]*q.m*M/5)*5}
+function pr(q,l){if(q.slug=="curly-caribbean"||q.t=="Pixie curly"||q.slug=="paradise-curly"){if(l==14)return 54;if(l==16)return 63;if(l==18)return 77;if(l==20)return 92}return ch(C[l]*q.m*K)}function mk(q,l){return Math.round(C[l]*q.m*M/5)*5}
 function fq(i){return P.filter(function(q){return q.id==i})[0]}
 try{cart=JSON.parse(localStorage.getItem("bv3")||"[]")}catch(e){cart=[]}
 function ph(q){return F[q.slug]||[]}
