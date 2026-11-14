@@ -268,9 +268,9 @@ P=[{id:1,slug:"curly-caribbean",n:"Curly Caribbean",t:"Caribbean",m:1,d:"Cachos 
 {id:5,slug:"egg-curl-natural",n:"Egg Curl Natural",t:"Egg curl",m:1,d:"Caracóis largos, 100 g, 1B natural"},
 {id:7,slug:"egg-curl-mel",n:"Egg Curl Mel",t:"Egg curl",m:1.12,d:"Ombré preto e mel, 100 g"},
 {id:8,slug:"paradise-curly",n:"Paradise Curly",t:"Paradise curly",m:1,d:"Caracóis definidos e volumosos, 100 g, 1B natural"},
-{id:9,slug:"kinky-curly",n:"Kinky Curly",t:"Kinky Curly",m:1,d:"Textura crespa, com cachos pequenos e definidos. 100 g, preto natural",quoteOnly:true}];
+{id:9,slug:"kinky-curly",n:"Kinky Curly",t:"Kinky Curly",m:1,d:"Textura crespa, com cachos pequenos e definidos. 100 g, preto natural"}];
 function ch(v){return v<30?Math.round(v):Math.round((v-9)/10)*10+9}
-function pr(q,l){if(q.slug=="curly-caribbean"||q.t=="Pixie curly"||q.slug=="paradise-curly"){if(l==14)return 54;if(l==16)return 63;if(l==18)return 77;if(l==20)return 92}return ch(C[l]*q.m*K)}function mk(q,l){return Math.round(C[l]*q.m*M/5)*5}
+function pr(q,l){if(q.slug=="kinky-curly"){var kp={12:39.90,14:47.90,16:53.90,18:56.90,20:59.90,22:64.90,24:69.90,26:74.90,28:79.90,30:89.90};return kp[l]||0}if(q.slug=="curly-caribbean"||q.t=="Pixie curly"||q.slug=="paradise-curly"){if(l==14)return 54;if(l==16)return 63;if(l==18)return 77;if(l==20)return 92}return ch(C[l]*q.m*K)}function lengths(q){return q.slug=="kinky-curly"?[12,14,16,18,20,22,24,26,28,30]:L}function mk(q,l){return Math.round(C[l]*q.m*M/5)*5}
 function fq(i){return P.filter(function(q){return q.id==i})[0]}
 try{cart=JSON.parse(localStorage.getItem("bv3")||"[]")}catch(e){cart=[]}
 function ph(q){return F[q.slug]||[]}
@@ -283,7 +283,7 @@ function main(q,p){return '<img class="mainp" id="mp'+q.id+'" data-big="'+big(q,
 function media(q){var a=ph(q);if(!a.length)return '<div class="media ph"><span>'+q.n+'</span><small>Fotos em breve</small></div>';
 return '<div class="media">'+main(q,a[0])+(a.length>1?'<div class="ths">'+a.map(function(p,k){return '<button class="th" data-ph="'+q.id+'" data-k="'+k+'" aria-label="Foto '+(k+1)+'"><img src="'+src(q,p,p.w[0])+'" alt=""></button>'}).join('')+'</div>':'')+'</div>'}
 grid=function(){var available=catalogProducts();if(cat!="Todos"&&!available.some(function(q){return q.t==cat})){cat="Todos";chips()}$("#grid").innerHTML=available.filter(function(q){return cat=="Todos"||q.t==cat}).map(function(q){var l=sel[q.id]||20;
-return '<article class="sec" id="m'+q.id+'">'+media(q)+'<div class="det"><h3>'+q.n+'</h3><p>'+q.d+'</p>'+(q.quoteOnly?'<div class="lens"><span class="catalog-note">Preços e comprimentos em breve.</span></div><div class="buy"><div><span class="price">Preço em breve</span><small>100 g · cabelo humano</small></div></div>':'<div class="lens" role="group" aria-label="Comprimento">'+L.map(function(x){return '<button class="pill" data-len="'+x+'" data-mid="'+q.id+'" aria-pressed="'+(x==l)+'"><span>'+x+'"</span><b>'+pr(q,x)+' €</b></button>'}).join('')+'</div><div class="buy">'+info(q,l)+'<button class="btn" data-add="'+q.id+'">Adicionar</button></div>')+'</div></article>'}).join("")};
+return '<article class="sec" id="m'+q.id+'">'+media(q)+'<div class="det"><h3>'+q.n+'</h3><p>'+q.d+'</p>'+(q.quoteOnly?'<div class="lens"><span class="catalog-note">Preços e comprimentos em breve.</span></div><div class="buy"><div><span class="price">Preço em breve</span><small>100 g · cabelo humano</small></div></div>':'<div class="lens" role="group" aria-label="Comprimento">'+lengths(q).map(function(x){return '<button class="pill" data-len="'+x+'" data-mid="'+q.id+'" aria-pressed="'+(x==l)+'"><span>'+x+'"</span><b>'+pr(q,x)+' €</b></button>'}).join('')+'</div><div class="buy">'+info(q,l)+'<button class="btn" data-add="'+q.id+'">Adicionar</button></div>')+'</div></article>'}).join("")};
 render=function(){var n=0,t=0;cart.forEach(function(i){n+=i.q;t+=i.q*i.p});
 $("#cnt").textContent=n;$("#total").textContent=fmt(t);var left=120-t;
 $("#shipmsg").textContent=left>0?"Faltam "+fmt(left)+" para envio grátis":"Tens envio grátis";$("#bar").style.width=Math.min(100,t/120*100)+"%";
